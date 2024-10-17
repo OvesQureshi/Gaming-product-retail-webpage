@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAQ Gaming</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="OAQ_20241016_185316_0000.png" alt="OAQ Gaming Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-btn">Home</a></li>
+            <li><a href="#products" class="nav-btn">Products</a></li>
+            <li><a href="#sale" class="nav-btn">Sale</a></li>
+            <li><a href="#blog" class="nav-btn">Blog</a></li>
+            <li><a href="#support" class="nav-btn">Support</a></li>
+            <li><a href="#" id="loginBtn">Login</a></li>
+            <li><a href="#cart"><i class="fas fa-shopping-cart"></i></a></li>
+        </ul>
+        <!-- Search Form -->
+        <div class="search-container">
+            <form id="searchForm">
+                <input class="search-input" placeholder="Search for products" type="search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <h1>Welcome to OAQ Gaming</h1>
+        <p>Explore the best gaming products and offers!</p>
+        <button id="shopNowBtn">Shop Now</button>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <h2>Our Products</h2>
+        <p>Check out our amazing collection of gaming accessories.</p>
+    </section>
+
+    <!-- Sale Section -->
+    <section id="sale" class="sale-section">
+        <h2>Big Sale</h2>
+        <p>Don't miss our ongoing sale!</p>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog-section">
+        <h2>Latest Blogs</h2>
+        <p>Read our latest articles about gaming trends.</p>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="support-section">
+        <h2>Support</h2>
+        <p>We are here to help you with any queries.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 OAQ Gaming. All rights reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span id="closeBtn" class="close">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="Password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth Scroll Functionality
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const sectionId = this.getAttribute('href');
+                document.querySelector(sectionId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Open/Close Modal
+        const loginModal = document.getElementById('loginModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const closeBtn = document.getElementById('closeBtn');
+
+        loginBtn.addEventListener('click', function(event) {
+            event.preventDefault();
+            loginModal.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', function() {
+            loginModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+
+        // Search Form Functionality
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const searchQuery = document.querySelector('.search-input').value;
+            if (searchQuery) {
+                alert(`You searched for: ${searchQuery}`);
+                // Optionally, you can redirect to a search results page
+                // window.location.href = `search.html?q=${searchQuery}`;
+            }
+        });
+
+        // Shop Now Button Redirection
+        document.getElementById('shopNowBtn').addEventListener('click', function() {
+            window.location.href = 'products.html';
+        });
+    </script>
+</body>
+</html>
